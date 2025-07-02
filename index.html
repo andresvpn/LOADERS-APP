@@ -69,10 +69,25 @@
   </div>
 
   <script>
-    setTimeout(() => {
-      window.location.href = "https://andresvpn.ct.ws";
-    }, 3000);
-  </script>
+  const version = 2;
+  const urlActualizar = "/flixstream.html";
+  const urlActual = "https://andresvpn.ct.ws";
+
+  const getURLParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  };
+
+  const v = parseInt(getURLParam('v'));
+
+  setTimeout(() => {
+    if (v !== version) {
+      window.location.href = urlActualizar;
+    } else {
+      window.location.href = urlActual;
+    }
+  }, 3000);
+</script>
 
 </body>
 </html>
