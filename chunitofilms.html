@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualización Requerida</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #27ae60;
+      --bg-color: #1A1A1A;
+      --text-color: #ffffff;
+      --card-bg: rgba(30, 30, 30, 0.9);
+      --gradient: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    
+    .update-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .logo {
+      width: 180px;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 10px rgba(39, 174, 96, 0.5));
+      animation: pulse 2s infinite;
+    }
+    
+    .update-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(39, 174, 96, 0.2);
+      transform: perspective(1000px) rotateX(5deg);
+      transition: all 0.5s ease;
+    }
+    
+    .update-card:hover {
+      transform: perspective(1000px) rotateX(0deg);
+      box-shadow: 0 15px 40px rgba(39, 174, 96, 0.3);
+    }
+    
+    h1 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      text-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
+    }
+    
+    .highlight-text {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .btn-update {
+      background: var(--primary-color);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .btn-update:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(39, 174, 96, 0.6);
+      color: white;
+      background: #2ecc71;
+    }
+    
+    .btn-update:active {
+      transform: translateY(1px);
+    }
+    
+    .btn-update::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    
+    .btn-update:hover::after {
+      transform: translateX(100%);
+    }
+    
+    .features-list {
+      text-align: left;
+      margin: 2rem 0;
+      padding-left: 1rem;
+    }
+    
+    .features-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .features-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+    }
+    
+    .version-badge {
+      background: var(--primary-color);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      animation: bounce 2s infinite;
+    }
+    
+    .pulse-loader {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 30px 0;
+      height: 50px;
+      align-items: flex-end;
+    }
+    
+    .pulse-bar {
+      width: 12px;
+      height: 10px;
+      background: var(--primary-color);
+      border-radius: 6px;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    
+    .pulse-bar:nth-child(1) { animation-delay: 0s; height: 20px; }
+    .pulse-bar:nth-child(2) { animation-delay: 0.1s; height: 30px; }
+    .pulse-bar:nth-child(3) { animation-delay: 0.2s; height: 40px; }
+    .pulse-bar:nth-child(4) { animation-delay: 0.3s; height: 50px; }
+    .pulse-bar:nth-child(5) { animation-delay: 0.4s; height: 40px; }
+    .pulse-bar:nth-child(6) { animation-delay: 0.5s; height: 30px; }
+    .pulse-bar:nth-child(7) { animation-delay: 0.6s; height: 20px; }
+    
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    
+    @keyframes pulse-scale {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Cambio específico para el texto del pie de página */
+    .version-info {
+      color: white !important; /* Texto en blanco */
+      opacity: 0.8;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .update-container {
+        padding: 1rem;
+      }
+      
+      .update-card {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container update-container">
+    <div class="update-card">
+      
+      <div class="pulse-loader">
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+        <div class="pulse-bar"></div>
+      </div>
+      
+      <div class="version-badge" id="versionBadge">NUEVA VERSIÓN DISPONIBLE</div>
+      
+      <h1 class="mb-4">Descarga la <span class="highlight-text">nueva versión</span></h1>
+      
+      
+      
+      <ul class="features-list" id="featuresList">
+        <!-- Las características se cargarán dinámicamente desde la constante data -->
+      </ul>
+      
+      <button class="btn btn-update" id="downloadBtn">
+        <i class="fas fa-download"></i> Descargar Ahora
+      </button>
+      
+      <div class="mt-4 version-info" id="versionInfo">
+        <!-- Información de versión se cargará dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Constante con los datos de la aplicación
+    const data = {
+      nombreApp: "ChunitoFilms",
+      version: "2.5.1",
+      cualidades: [
+        "Contenido exclusivo y actualizado",
+        "Mejor calidad de streaming",
+        "Nuevas funciones premium",
+        "Protección de seguridad mejorada",
+        "Interfaz más rápida e intuitiva"
+      ],
+      linkDescarga: "https://descarga.flixstream.com/latest",
+      tamaño: "45 MB",
+      requerimientos: "Android 8+"
+    };
+    
+    // Cargar los datos en el DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar el título de la página
+      document.title = `Actualización Requerida | ${data.nombreApp}`;
+      
+      // Configurar el badge de versión
+      document.getElementById('versionBadge').textContent = `VERSIÓN ${data.version}`;
+      
+      // Configurar la información de versión (ahora con clase version-info para texto blanco)
+      document.getElementById('versionInfo').innerHTML = 
+        `<span>${data.nombreApp} v${data.version} | Tamaño: ${data.tamaño} | Compatible con ${data.requerimientos}</span>`;
+      
+      // Cargar las características
+      const featuresList = document.getElementById('featuresList');
+      data.cualidades.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        featuresList.appendChild(li);
+      });
+      
+      // Configurar el botón de descarga
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparando descarga...';
+        this.classList.add('disabled');
+        
+        // Simular descarga (redirección después de 2 segundos)
+        setTimeout(() => {
+          window.location.href = data.linkDescarga;
+        }, 2000);
+      });
+      
+      // Animación del loader de barras
+      const bars = document.querySelectorAll('.pulse-bar');
+      bars.forEach((bar, index) => {
+        bar.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
+</body>
+</html>
