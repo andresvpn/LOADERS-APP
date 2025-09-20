@@ -69,24 +69,24 @@
   </div>
 
   <script>
-  const version = 4 || 3;
-  const urlActualizar = "/flixstream.html";
-  const urlActual = "https://andresvpn.ct.ws";
+  const versiones = [3, 4];
+const urlActualizar = "/flixstream.html";
+const urlActual = "https://andresvpn.ct.ws";
 
-  const getURLParam = (param) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-  };
+const getURLParam = (param) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+};
 
-  const v = parseInt(getURLParam('v'));
+const v = parseInt(getURLParam("v"));
 
-  setTimeout(() => {
-    if (v !== version) {
-      window.location.href = urlActualizar;
-    } else {
-      window.location.href = urlActual;
-    }
-  }, 10000);
+setTimeout(() => {
+  if (!versiones.includes(v)) {
+    window.location.href = urlActualizar;
+  } else {
+    window.location.href = urlActual;
+  }
+}, 10000);
 </script>
  </body>
 </html>
