@@ -2,19 +2,19 @@
   <Ad id="flixstream-preroll">
     <InLine>
       <AdSystem>FlixStream</AdSystem>
-      <AdTitle>FlixStream Movies</AdTitle>
+      <AdTitle>FlixStream</AdTitle>
       <Creatives>
         <Creative>
           <Linear>
-            <Duration>00:00:11</Duration>
+            <Duration>00:00:18</Duration>
             <MediaFiles>
               <MediaFile type="video/mp4" delivery="progressive">
-                <![CDATA[https://raw.githubusercontent.com/andresvpn/LOADERS-APP/refs/heads/main/Flixstream.mp4]]>
+                <![CDATA[https://raw.githubusercontent.com/andresvpn/LOADERS-APP/refs/heads/main/Flix.mp4]]>
               </MediaFile>
             </MediaFiles>
             <VideoClicks>
               <ClickThrough>
-                <![CDATA[https://t.me/FlixStream_Movies]]>
+                <![CDATA[https://t.me/FlixStream_Oficial]]>
               </ClickThrough>
             </VideoClicks>
           </Linear>
